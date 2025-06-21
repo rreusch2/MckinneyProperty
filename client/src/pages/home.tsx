@@ -1,7 +1,7 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
-import CoreValuesSection from "@/components/before-after-section";
+import BeforeAfterSection from "@/components/before-after-section";
 import AboutSection from "@/components/about-section";
 import FacebookFeedSection from "@/components/facebook-feed-section";
 import ContactSection from "@/components/contact-section";
@@ -14,7 +14,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <ServicesSection />
-      <CoreValuesSection />
+      <BeforeAfterSection />
       <AboutSection />
       <FacebookFeedSection />
       <ContactSection />
