@@ -27,13 +27,15 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('Getting contact requests...');
     const requests = await storage.getContactRequests();
+    console.log(`Retrieved ${requests.length} contact requests`);
     res.status(200).json(requests);
   } catch (error) {
     console.error("Error retrieving contact requests:", error);
     res.status(500).json({ 
       success: false, 
-      message: "Failed to retrieve contact requests" 
+      message: `Failed to retrieve contact requests: ${error.message}` 
     });
   }
 }

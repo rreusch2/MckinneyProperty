@@ -78,28 +78,51 @@ export default async function handler(req, res) {
     if (!cloudinaryService) initCloudinary();
     if (!googleSheetsService) await initGoogleSheets();
 
-    // Handle file upload manually since we can't use multer middleware directly
-    // Note: For file uploads, you'll need to handle multipart/form-data differently
-    // This simplified version handles JSON data only
+    // Log incoming request to debug
+    console.log('Request headers:', req.headers);
+    console.log('Request method:', req.method);
+    
+    // In serverless functions, we need to parse the body manually
+    let requestBody;
+    if (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) {
+      // Parse JSON body
+      requestBody = typeof req.body === 'object' ? req.body : JSON.parse(req.body || '{}');
+    } else {
+      // For form submissions without json content type
+      requestBody = req.body || {};
+    }
+    
+    console.log('Parsed request body:', requestBody);
     
     // Validate the request body
-    const validatedData = insertContactRequestSchema.parse(req.body);
+    const validatedData = insertContactRequestSchema.parse(requestBody);
     
     let photoUrl = "";
     
     // If photoUrl was sent in body
-    if (req.body.photoUrl) {
-      photoUrl = req.body.photoUrl;
+    if (requestBody.photoUrl) {
+      photoUrl = requestBody.photoUrl;
     }
+    
+    console.log('Validated data:', validatedData);
     
     // Save contact request to storage
     const savedRequest = await storage.createContactRequest(validatedData);
+    console.log('Saved request:', savedRequest);
     
     // If Google Sheets is configured, add to spreadsheet
     if (googleSheetsService) {
-      await googleSheetsService.addContactRequest(validatedData, photoUrl);
+      console.log('Adding to Google Sheets...');
+      try {
+        await googleSheetsService.addContactRequest(validatedData, photoUrl);
+        console.log('Successfully added to Google Sheets');
+      } catch (sheetError) {
+        console.error('Error adding to Google Sheets:', sheetError);
+        // Continue even if Google Sheets fails
+      }
     }
     
+    // Return success response
     res.status(200).json({ 
       success: true, 
       message: "Contact request submitted successfully. We'll get back to you soon!", 
