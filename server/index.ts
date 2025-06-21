@@ -1,3 +1,33 @@
+// Load dotenv before anything else
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from 'url';
+
+// Get directory name in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '..');
+
+// Load environment variables from root .env file - do this first before other imports
+try {
+  const envResult = dotenv.config({ path: path.resolve(rootDir, ".env"), debug: true });
+  
+  console.log('Environment variables loaded from:', path.resolve(rootDir, ".env"));
+  
+  if (envResult.error) {
+    console.error('Error loading .env file:', envResult.error);
+  } else {
+    console.log('Loaded env variables:', Object.keys(envResult.parsed || {}));
+    // Show first few characters of each env var to verify they're loaded
+    Object.entries(envResult.parsed || {}).forEach(([key, value]) => {
+      console.log(`${key}: ${typeof value === 'string' ? value.substring(0, 10) + '...' : value}`);
+    });
+  }
+} catch (error) {
+  console.error('Exception while loading dotenv:', error);
+}
+
+// Now import other modules that might need environment variables
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";

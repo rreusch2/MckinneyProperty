@@ -40,14 +40,40 @@ export default function Footer() {
               </p>
               <p className="flex items-center">
                 <Facebook className="w-4 h-4 mr-2" />
-                McKinney Total Property Care LLC
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61577748385741" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  McKinney Total Property Care LLC
+                </a>
               </p>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {currentYear} McKinney Total Property Care LLC. All rights reserved.</p>
+          <p className="mb-2">&copy; {currentYear} McKinney Total Property Care LLC. All rights reserved.</p>
+          <p className="text-sm">
+            Website created by{" "}
+            <a 
+              href="https://www.fluxstreamai.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary-blue hover:text-secondary-blue transition-colors"
+            >
+              Reid Reusch
+            </a>
+            {" "}- <a 
+              href="https://www.fluxstreamai.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              www.fluxstreamai.com
+            </a>
+          </p>
         </div>
       </div>
     </footer>
