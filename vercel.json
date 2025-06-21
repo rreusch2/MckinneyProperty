@@ -3,14 +3,27 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
   "framework": "vite",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "src": "/api/contact",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/contact/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/api/contact-requests",
+      "methods": ["GET", "OPTIONS"],
+      "dest": "/api/contact-requests/index.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "functions": {
