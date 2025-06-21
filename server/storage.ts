@@ -18,6 +18,7 @@ export class MemStorage implements IStorage {
     const id = this.currentId++;
     const request: ContactRequest = {
       ...insertRequest,
+      email: insertRequest.email || null, // Convert undefined to null
       id,
       createdAt: new Date(),
     };
