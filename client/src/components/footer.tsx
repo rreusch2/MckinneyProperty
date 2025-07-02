@@ -26,7 +26,6 @@ export default function Footer() {
               <li>Pressure Washing</li>
               <li>Landscaping</li>
               <li>Concrete Sealing</li>
-              <li>Junk Removal</li>
               <li>Painting & More</li>
             </ul>
           </div>

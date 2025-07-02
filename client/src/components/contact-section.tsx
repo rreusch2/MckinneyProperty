@@ -18,14 +18,10 @@ const services = [
   "Pressure Washing",
   "Landscaping", 
   "Concrete Sealing",
-  "Junk Removal",
   "Painting",
   "Gutter Cleaning",
   "Lawn Mowing",
   "Pool Cleaning",
-  "Moving Services",
-  "Driveway Salting",
-  "Snow Removal",
   "Brush Clearing",
   "Multiple Services"
 ];

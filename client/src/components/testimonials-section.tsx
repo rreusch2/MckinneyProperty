@@ -17,7 +17,7 @@ const testimonials = [
     name: "Lisa Davis",
     role: "Business Owner",
     rating: 5,
-    text: "When we needed help with junk removal and gutter cleaning, Lacon was responsive and got the job done quickly. Highly recommend for any property maintenance needs!"
+    text: "When we needed help with gutter cleaning and landscaping, Lacon was responsive and got the job done quickly. Highly recommend for any property maintenance needs!"
   }
 ];
 

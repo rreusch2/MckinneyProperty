@@ -2,13 +2,10 @@ import {
   SprayCan, 
   Leaf, 
   TrafficCone, 
-  Trash2, 
   PaintBucket, 
   Home, 
   Scissors, 
   Waves, 
-  Truck, 
-  Snowflake, 
   TreePine,
   Phone 
 } from "lucide-react";
@@ -30,11 +27,6 @@ const services = [
     description: "Protect and enhance concrete surfaces with professional sealing services."
   },
   {
-    icon: Trash2,
-    title: "Junk Removal",
-    description: "Efficient removal of unwanted items, debris, and clutter from your property."
-  },
-  {
     icon: PaintBucket,
     title: "Painting",
     description: "Interior and exterior painting services to refresh and protect your property."
@@ -53,21 +45,6 @@ const services = [
     icon: Waves,
     title: "Pool Cleaning",
     description: "Professional pool cleaning and maintenance for crystal clear water year-round."
-  },
-  {
-    icon: Truck,
-    title: "Moving Services",
-    description: "Reliable moving assistance for residential and commercial relocations."
-  },
-  {
-    icon: TrafficCone,
-    title: "Driveway Salting",
-    description: "Winter driveway salting services to ensure safe access during icy conditions."
-  },
-  {
-    icon: Snowflake,
-    title: "Snow Removal",
-    description: "Prompt snow removal services to keep your property accessible and safe."
   },
   {
     icon: TreePine,
